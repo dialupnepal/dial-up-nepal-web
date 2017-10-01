@@ -1,0 +1,475 @@
+/*-Page Login
+--Variables
+    ---colors
+    ---Font-sizes
+    ---Mixins
+--Common Buttons and Text-feilds
+
+
+--LOGIN
+--HOME
+ 
+ */
+
+// Variables (Declare all CSS Variables here)
+//---Colors
+$th-red-color:#dc143c;
+$th-blue-color:#003893;
+$th-font-color:#111111;
+$th-white-color:#fff;
+$th-black-color:#000;
+$th-dark-border:#c2c2c2;
+$th-light-border:#ebebeb;
+//--Font-sizes
+$th-main-font:14px;
+$th-font-famly:'Quicksand',
+sans-serif;
+//--Mixins
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-shadow($shadow, $shadow1) {
+    -webkit-box-shadow: $shadow, $shadow1;
+    -moz-box-shadow: $shadow, $shadow1;
+    -ms-box-shadow: $shadow, $shadow1;
+    box-shadow: $shadow, $shadow1;
+}
+
+//---Common Buttons and Text-feilds
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: $th-font-famly;
+    font-size: $th-main-font;
+}
+
+.margin_top_tiny {
+    margin-top: 2em;
+}
+
+.margin_top_medium {
+    margin-top: 3em;
+}
+
+.margin_top_huge {
+    margin-top: 4em;
+}
+
+.margin_bottom_tiny {
+    margin-bottom: 2em;
+}
+
+.margin_bottom_medium {
+    margin-bottom: 3em;
+}
+
+.margin_bottom_huge {
+    margin-bottom: 4em;
+}
+
+// Text Feild Css
+.text-material {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    .form-control {
+        font-size: $th-main-font;
+        padding: 5px;
+        width: 100%;
+        max-width: 290px;
+        border: none;
+        border-bottom: 1px solid $th-dark-border;
+        outline: none;
+        color: $th-font-color;
+        &:focus,
+        &:valid {
+            &~label {
+                top: -20px;
+                font-size: 10px;
+                color: $th-blue-color;
+            }
+        }
+    }
+    label {
+        color: $th-font-color;
+        font-size: $th-main-font - 2;
+        font-weight: 600;
+        position: absolute;
+        pointer-events: none;
+        text-transform: uppercase;
+        left: 5px;
+        top: 5px;
+        transition: 0.2s ease all;
+    }
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &:before,
+    &:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: $th-blue-color;
+        transition: 0.2s ease all;
+    }
+    &:before {
+        left: 50%;
+    }
+    &:after {
+        right: 50%;
+    }
+}
+
+.form-control:focus {
+    border-bottom: 0px;
+    &~.bar {
+        &:before,
+        &:after {
+            width: 50%;
+        }
+    }
+}
+
+// button Css
+.btn-common {
+    background: $th-red-color;
+    border: none;
+    padding: 9px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $th-white-color;
+    font-size: $th-main-font;
+    @include border-radius(5px);
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+        background: lighten($th-red-color, 7%);
+    }
+}
+
+//-----LOGIN------------------//
+.page-login {
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+    .login-container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+    }
+    .login-container .section-image {
+        width: 75%;
+        height: 100%;
+        float: left;
+        background-image: url(../images/login-back.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .login-container .section-solid {
+        width: 25%;
+        height: 100%;
+        float: left;
+        background: $th-red-color;
+    }
+    .login-container .section-login {
+        width: 360px;
+        height: 520px;
+        position: absolute;
+        top: 65px;
+        right: 120px;
+        background: $th-white-color;
+        @include border-radius(7px);
+        @include box-shadow(0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19));
+        .section-logo {
+            width: 100%;
+            height: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-title {
+            width: 100%;
+            height: 20px;
+            color: $th-font-color;
+            font-size: $th-main-font + 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        .section-form {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 30px;
+        }
+        .section-form {
+            form {
+                width: 100%;
+                height: 100%;
+                .forget-link {
+                    float: right;
+                    font-size: $th-main-font - 2;
+                    a {
+                        color: $th-font-color;
+                        text-decoration: none;
+                        &:hover {
+                            color: $th-blue-color;
+                        }
+                    }
+                }
+            }
+            form .login-button {
+                width: 100%;
+                height: 60px;
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+            }
+            form .social-title {
+                width: 1005;
+                height: 20px;
+                font-size: $th-main-font - 3;
+                color: $th-font-color;
+            }
+            form .social-login {
+                width: 100%;
+                height: auto;
+                display: flex;
+                .btn-facebook-login {
+                    background: #3b5998;
+                    border: none;
+                    padding: 2px 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: $th-main-font - 3;
+                    color: $th-white-color;
+                    @include border-radius(25px);
+                    cursor: pointer;
+                }
+                .btn-google-login {
+                    background: #4885ed;
+                    border: none;
+                    padding: 6px 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: $th-main-font - 3;
+                    color: $th-white-color;
+                    @include border-radius(25px);
+                    cursor: pointer;
+                    margin-left: 15px;
+                    img {
+                        margin-right: 6px;
+                    }
+                }
+            }
+            form .register-link {
+                width: 100%;
+                position: absolute;
+                bottom: 10px;
+                color: $th-font-color;
+                font-size: $th-main-font;
+                font-weight: 600;
+                left: 0px;
+                text-align: center;
+                a {
+                    color: $th-font-color;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//-----HOME------------------//
+//header
+.header {
+    .top-navbar {
+        background: $th-red-color;
+        color: $th-white-color;
+        height: 50px;
+        .navbar-brand {
+            color: $th-white-color;
+            font-size: $th-main-font + 4;
+            font-weight: bold;
+        }
+    }
+    .top-navbar .nav-right-links {
+        li {
+            margin-right: 30px;
+            a {
+                color: $th-white-color;
+                font-size: $th-main-font + 1;
+                img {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .custom-toggler.navbar-toggler {
+        border-color: rgb(255, 255, 255);
+    }
+    .custom-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    }
+}
+
+//section-banner
+.section-banner {
+    width: 100%;
+    height: 300px;
+    background: url(../images/banner1.png);
+    background-size: cover;
+    position: relative;
+    .search-form {
+        position: absolute;
+        top: 180px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .area-ico {
+            position: absolute;
+            top: 6px;
+            left: 25px;
+            z-index: 1;
+        }
+        .area-select {
+            padding-left: 40px;
+        }
+        .ico_search {
+            background: $th-white-color;
+        }
+        .page-search {
+            border: 0px;
+            font-size: $th-main-font;
+            padding: 12px 6px;
+        }
+    }
+}
+
+//main-body
+.section-services-main {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    .sidebar-outer {
+        position: relative;
+    }
+    .sidebar-outer {
+        .list-header {
+            height: 35px;
+            border-radius: 5px 5px 0px 0px;
+            background: $th-red-color;
+            color: $th-white-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+        }
+        .services-list {
+            position: static;
+            width: 100%;
+        }
+        .services-list-fixed {
+            position: fixed;
+            width: 100%;
+            top: 0px;
+            margin-top: 10px;
+            padding-left: 0px;
+            padding-right: 30px;
+        }
+    }
+    .sidebar-outer .services {
+        padding-left: 0px;
+        border: 1px solid $th-dark-border;
+        border-radius: 8px;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-top: 0px;
+        li {
+            padding: 8px 3px 8px 0px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid $th-light-border;
+            display: block;
+            position: relative;
+            cursor: pointer;
+            img {
+                padding-left: 30px;
+            }
+            span {
+                margin-left: 20px;
+            }
+            a {
+                position: absolute;
+                top: 0px;
+                bottom: 0px;
+                right: 0px;
+                left: 0px;
+            }
+            &:hover {
+                background: $th-light-border;
+            }
+        }
+    }
+    .content-services {
+        margin-right: 0px;
+        margin-left: 0px;
+        h2 {
+            font-size: 18px;
+        }
+        .for-shadow {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            @include border-radius(8px);
+        }
+        .single-service-conatiner {
+            margin-top: 20px;
+            padding: 0px 25px;
+        }
+        .single-service-header {
+            height: 30px;
+            border-radius: 5px 5px 0px 0px;
+            background: $th-red-color;
+            color: $th-white-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: $th-main-font + 1;
+        }
+        .service-image-holder {
+            height: 150px;
+            overflow: hidden;
+        }
+        .service-type {
+            padding: 10px 20px 10px 20px;
+            li {
+                padding: 5px 5px;
+                a {
+                    color: $th-font-color;
+                    font-size: $th-main-font;
+                }
+            }
+        }
+    }
+}
